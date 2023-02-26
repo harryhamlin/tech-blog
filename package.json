@@ -1,13 +1,31 @@
 {
-  "name": "challenge14",
+  "name": "tech-blog",
   "version": "1.0.0",
   "description": "## Your Task",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "seed": "node seeds/index.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "harryhamlin",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harryhamlin/tech-blog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/harryhamlin/tech-blog/issues"
+  },
+  "homepage": "https://github.com/harryhamlin/tech-blog#readme",
+  "dependencies": {
+    "@harryhamlin/readme-generator": "^1.0.4",
+    "bcrypt": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "mysql2": "^2.2.5",
+    "sequelize": "^5.21.7"
+  }
 }
