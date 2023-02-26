@@ -12,7 +12,7 @@ Content.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        body: {
+        content_body: {
             type: DataTypes.TEXT,
         },
         user_id: {

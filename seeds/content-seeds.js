@@ -2,15 +2,15 @@ const { Content } = require(`../models`);
 
 const contentData = [
     {
-      body: `test 1`,
+      content_body: `test 1`,
       user_id: 1
     },
     {
-      body: `test 2`,
+      content_body: `test 2`,
       user_id: 2
     },
     {
-      body: `test 3`,
+      content_body: `test 3`,
       user_id: 3
     },
 ]

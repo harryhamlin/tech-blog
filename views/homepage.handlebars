@@ -1,9 +1,9 @@
-  <section class="section">
+<section class="section">
     <div class="container">
-      <h1 class="title">
-        hola
-      </h1>
-      <p class="subtitle">
-      </p>
+        <div class="columns is-multiline">
+            {{#each contents as |content|}}
+           {{> content-cards}}
+            {{/each}}
+        </div>
     </div>
-  </section>
+</section>
