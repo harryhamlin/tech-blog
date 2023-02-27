@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const { Content, Comment, User } = require(`../models`)
+const withAuth = require('../utils/auth')
 
-// TODO: Add a comment describing the functionality of the withAuth middleware
 router.get('/', async (req, res) => {
   try {
     const allContent = await Content.findAll()
-    const contents = allContent.map((content) => content.get({ plain:true }))
+    const contents = allContent.map((content) => content.get({ plain: true }))
     res.render('homepage', {
       contents
     });
@@ -14,4 +14,36 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/login', async (req, res) => {
+  try {
+    res.render('login')
+  } catch (err) {
+    res.status(500).json(err)
+  }
+})
+
+router.get('/dashboard', async (req, res) => {
+  try {
+    res.render('dashboard')
+  } catch (err) {
+    res.status(500).json(err)
+  }
+})
+
+router.get('/content/:id', async (req, res) => {
+  try {
+    const content = await Content.findByPk(req.params.id)
+    if (!content) { return res.status(404).json('no content found') }
+    const contents = content.get({ plain: true })
+    const comment = await Comment.findAll({
+      where: { content_id: req.params.id}
+    })
+    const comments = comment.map((comment) => comment.get({ plain: true }))
+    res.render('content', {
+      contents, comments
+    });
+  } catch (err) {
+    return res.status(500).json(err)
+  }
+})
 module.exports = router;

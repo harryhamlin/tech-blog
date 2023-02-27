@@ -12,17 +12,17 @@ Comment.init(
             primaryKey: true,
             autoIncrement: true
         },
-        body: {
+        comment_body: {
             type: DataTypes.TEXT,
         },
-        // user_id: {
-        //     type: DataTypes.INTEGER,
-        //     allowNull: true,
-        //     references: {
-        //         model: `user`,
-        //         key: `id`
-        //     }
-        // },
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            references: {
+                model: `user`,
+                key: `id`
+            }
+        },
         content_id: {
             type: DataTypes.INTEGER,
             allowNull: true,

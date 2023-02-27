@@ -1,0 +1,56 @@
+<section class="section">
+    <div class="container">
+        <div class="columns is-multiline">
+            <div class="column is-two-thirds">
+                <div class="card" style="background-color: #6e9d71">
+                    <div class="card-content">
+                        <div class="content">
+                            {{contents.content_body}}
+                        </div>
+                        <div class="content">
+                            <p6>Posted by: {{contents.user_id}}</p6>
+                        </div>
+                        <div class="content">
+                            <p6>On: {{contents.createdAt}}</p6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <div class="columns is-multiline">
+            {{#each comments as |comment|}}
+            {{> comment}}
+            {{/each}}
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-two-thirds">
+                <div class="card" style="background-color: #656565">
+                    <div class="card-content">
+                        <div class="content">
+                            <div class="field">
+                                <div class="control">
+                                    <input id="comment" class="input" type="text" placeholder="leave a comment">
+                                </div>
+                            </div>
+                            <div class="buttons" id="addComment">
+                                <a class="button is-dark">
+                                    <strong>submit</strong>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="/js/addcomment.js"></script>
