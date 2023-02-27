@@ -9,11 +9,11 @@ const commentFormHandler = async (event) => {
     const length = path.length
     const content_id = path[(length - 1)]
     if (comment_body) {
-        fetch('/api/comment/', {
+        await fetch('/api/comment/', {
             method: 'POST',
             body: JSON.stringify({ comment_body, user_id, content_id }),
             headers: { 'Content-Type': 'application/json' },
-        });
+        })
     }
 };
 
