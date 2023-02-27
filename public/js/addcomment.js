@@ -2,7 +2,6 @@ const addCommentButton = document.querySelector('#addComment')
 
 const commentFormHandler = async (event) => {
     event.preventDefault();
-    console.log('click')
     const comment_body = document.querySelector('#comment').value.trim();
     const user_id = 1;
     const path = window.location.pathname.split('/');
@@ -14,6 +13,7 @@ const commentFormHandler = async (event) => {
             body: JSON.stringify({ comment_body, user_id, content_id }),
             headers: { 'Content-Type': 'application/json' },
         })
+        document.location.replace(`/content/${content_id}`)
     }
 };
 
