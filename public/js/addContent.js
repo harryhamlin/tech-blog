@@ -2,7 +2,6 @@ const addContentButton = document.querySelector('#addContent')
 
 const contentFormHandler = async (event) => {
     event.preventDefault();
-    console.log('click')
     const content_body = document.querySelector('#content').value.trim();
     const user_id = 1;
     if (content_body) {
@@ -11,7 +10,7 @@ const contentFormHandler = async (event) => {
             body: JSON.stringify({ content_body, user_id }),
             headers: { 'Content-Type': 'application/json' },
         })
-        document.location.replace('/dashboard')
+        document.location.replace('/dashboard');
     }
     if (response.ok) {
         ;
@@ -20,4 +19,4 @@ const contentFormHandler = async (event) => {
     }
 };
 
-addContentButton.addEventListener('click', contentFormHandler)
+addContentButton.addEventListener('click', contentFormHandler);

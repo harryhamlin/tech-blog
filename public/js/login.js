@@ -2,18 +2,15 @@ const loginButton = document.querySelector('#login')
 
 const loginFormHandler = async (event) => {
     event.preventDefault();
-    console.log('click')
-
-    const name = document.querySelector('#un').value.trim();
+    const email = document.querySelector('#un').value.trim();
     const password = document.querySelector('#pw').value.trim();
 
-    if (name && password) {
+    if (email && password) {
       const response = await fetch('/api/user/login', {
         method: 'POST',
-        body: JSON.stringify({ name, password }),
+        body: JSON.stringify({ email, password }),
         headers: { 'Content-Type': 'application/json' },
       });
-  
       if (response.ok) {
         document.location.replace('/');
       } else {

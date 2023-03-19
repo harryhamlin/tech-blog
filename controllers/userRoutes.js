@@ -12,9 +12,7 @@ router.get('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
-        console.log(req.body.name)
-        console.log(req.body.password)
-        const userData = await User.findOne({ where: { name: req.body.name } });
+        const userData = await User.findOne({ where: { email: req.body.email } });
         console.log(userData)
         if (!userData) {
           res
@@ -22,7 +20,6 @@ router.post('/login', async (req, res) => {
             .json({ message: 'Incorrect username or password, please try again' });
           return;
         }
-    
         const validPassword = await userData.checkPassword(req.body.password);
         console.log(validPassword)
     
@@ -34,6 +31,7 @@ router.post('/login', async (req, res) => {
         }
     
         req.session.save(() => {
+          console.log('login')
           req.session.user_id = userData.id;
           req.session.logged_in = true;
           
@@ -41,8 +39,21 @@ router.post('/login', async (req, res) => {
         });
     
       } catch (err) {
+        console.log('error')
         res.status(400).json(err);
       }
+})
+
+router.post('/create', async (req, res) => {
+  console.log('click')
+    try {
+      User.create(req.body)
+      .then((user) => {
+        res.status(200).json(user)
+      })
+    } catch (err) {
+      res.status(400).json(err)
+    }
 })
 
 module.exports = router;
