@@ -1,12 +1,13 @@
 const router = require('express').Router();
 const { Content, Comment, User } = require(`../models`)
-const withAuth = require('../utils/auth')
+const auth = require('../utils/auth')
 
 router.get('/', async (req, res) => {
   try {
     const allContent = await Content.findAll()
     const contents = allContent.map((content) => content.get({ plain: true }))
     res.render('homepage', {
+      logged_in: req.session.logged_in,
       contents
     });
   } catch (err) {
@@ -21,14 +22,6 @@ router.get('/login', async (req, res) => {
     res.status(500).json(err)
   }
 })
-
-// router.get('/dashboard', async (req, res) => {
-//   try {
-//     res.render('dashboard')
-//   } catch (err) {
-//     res.status(500).json(err)
-//   }
-// })
 
 router.get('/content/:id', async (req, res) => {
   try {
@@ -47,7 +40,7 @@ router.get('/content/:id', async (req, res) => {
   }
 })
 
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', auth, async (req, res) => {
   try {
     // pull user id from the cookie here
     const content = await Content.findAll({
