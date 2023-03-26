@@ -37,10 +37,10 @@ router.get('/content/:id', async (req, res) => {
     const commentUserDataRaw = comments.map((comment) => comment.user_id);
     const commentUserNames = await Promise.all(commentUserDataRaw.map(async (comment) => await User.findByPk(comment)));
     let commentArray = [];
-    for (let i = 0; i < comments.length; i++) {
+   for (let i = 0; i < comments.length; i++) {
       let currentComment = comments[i]
       const currentUser = commentUserNames[i].name
-      currentComment.user_id = currentUser
+      currentComment.user_name = currentUser
       commentArray.push(currentComment)
     }
     comments = commentArray

@@ -2,7 +2,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Content extends Model {}
+class Content extends Model { }
 
 Content.init(
     {
@@ -20,9 +20,9 @@ Content.init(
             allowNull: true,
             references: {
                 model: `user`,
-                ket: `id`
+                key: `id`
             }
-        }
+        },
     },
     {
         sequelize,

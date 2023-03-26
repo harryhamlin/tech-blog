@@ -1,8 +1,10 @@
 // un date
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const { User } = require(`./index`);
 
-class Comment extends Model {}
+
+class Comment extends Model { }
 
 Comment.init(
     {
@@ -30,9 +32,25 @@ Comment.init(
                 model: `content`,
                 key: `id`
             }
+        },
+        user_name: {
+            type: DataTypes.STRING,
+            allowNull: true,
         }
     },
     {
+        // hooks: {
+        //     beforeCreate: async (newUserData) => {
+        //         const commentUser = await User.findByPk(newUserData.user_id);
+        //         newUserData.user_name = commentUser.name
+        //         return newUserData
+        //     },
+        //     beforeUpdate: async (newUserData) => {
+        //         const commentUser = await User.findByPk(newUserData.user_id);
+        //         newUserData.user_name = commentUser.name
+        //         return newUserData
+        //     },
+        // },
         sequelize,
         timestamps: true,
         freezeTableName: true,
