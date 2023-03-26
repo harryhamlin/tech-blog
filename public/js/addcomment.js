@@ -2,6 +2,7 @@ const addCommentButton = document.querySelector('#addComment')
 
 const commentFormHandler = async (event) => {
     event.preventDefault();
+    console.log('click')
     const comment_body = document.querySelector('#comment').value.trim();
     const path = window.location.pathname.split('/');
     const length = path.length
