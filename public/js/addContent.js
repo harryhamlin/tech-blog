@@ -7,7 +7,7 @@ const contentFormHandler = async (event) => {
     if (content_body) {
         await fetch('/api/content/', {
             method: 'POST',
-            body: JSON.stringify({ content_body }),
+            body: JSON.stringify({ content_body  }),
             headers: { 'Content-Type': 'application/json' },
         })
         document.location.replace('/dashboard');

@@ -29,6 +29,7 @@
     </div>
 </section>
 
+{{#if logged_in}}
 <section class="section">
     <div class="container">
         <div class="columns">
@@ -53,7 +54,8 @@
         </div>
     </div>
 </section>
+{{/if}}
 
-
-
+{{#if logged_in}}
 <script src="/js/addComment.js"></script>
+{{/if}}
