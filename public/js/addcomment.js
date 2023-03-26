@@ -3,7 +3,6 @@ const addCommentButton = document.querySelector('#addComment')
 const commentFormHandler = async (event) => {
     event.preventDefault();
     const comment_body = document.querySelector('#comment').value.trim();
-    // const user_id = req.session.user_id;
     const path = window.location.pathname.split('/');
     const length = path.length
     const content_id = path[(length - 1)]
