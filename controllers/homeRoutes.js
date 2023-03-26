@@ -56,9 +56,9 @@ router.get('/content/:id', async (req, res) => {
 
 router.get('/dashboard', auth, async (req, res) => {
   try {
-    // pull user id from the cookie here
+    const currentUser = req.session.user_id
     const content = await Content.findAll({
-      where: { user_id: 1 }
+      where: { user_id: currentUser }
     })
     if (!content) { return res.status(404).json('no content found') }
     const contents = content.map((content) => content.get({ plain: true }))

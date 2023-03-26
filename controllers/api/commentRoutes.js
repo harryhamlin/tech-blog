@@ -3,7 +3,7 @@ const { Comment } = require(`../../models`);
 const auth = require(`../../utils/auth`);
 
 router.post('/',
-  // auth,
+  auth,
   async (req, res) => {
     try {
       Comment.create({
